@@ -1,1 +1,0 @@
-SECRET_KEY = '_$bg+oblikl8nugmpvrnn@&u2xorse#q1o&9iu%x(5igtk!%58'
