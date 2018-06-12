@@ -1,1 +1,3 @@
-test_assignment/settings_secret.py
+/test_assignment/settings_secret.py
+
+__pycache__/
