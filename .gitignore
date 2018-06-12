@@ -1,4 +1,4 @@
-/test_assignment/test_assignment/settings_secret.py
+test_assignment/test_assignment/settings_secret.py
 
-/test_assignment/test_assignment/__pycache__/
-/test_assignment/groups/__pycache__/
+test_assignment/test_assignment/__pycache__/
+test_assignment/groups/__pycache__/
