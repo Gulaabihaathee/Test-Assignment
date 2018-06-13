@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Hero
+from .heromodel import Hero
 
 class HeroSerializer(serializers.ModelSerializer):
 

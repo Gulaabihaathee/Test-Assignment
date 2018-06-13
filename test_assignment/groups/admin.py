@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Hero
+from .heromodel import Hero
 from .groupmodel import Group
 
 class Heroes(admin.ModelAdmin):

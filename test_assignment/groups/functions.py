@@ -1,4 +1,4 @@
-from .models import Hero
+from .heromodel import Hero
 import datetime
 from random import choice
 import pickle

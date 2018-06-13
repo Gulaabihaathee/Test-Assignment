@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from .models import Hero
+from .heromodel import Hero
 from rest_framework.permissions import IsAdminUser
 from rest_framework.views import APIView
 from rest_framework.response import Response
