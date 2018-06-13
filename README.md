@@ -2,14 +2,6 @@
 
 Test assignment for Summer Python Internship.
 
-# Requirements
-
-*pip install Django==2.0.5*
-
-*pip install djangorestframework*
-
-*pip install numpy*
-
 # Run
 Enter directory:
 
