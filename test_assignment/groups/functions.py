@@ -1,9 +1,7 @@
 from .heromodel import Hero
 import datetime
 from random import choice
-import pickle
-import numpy as np
-import os.path
+from .InteractionArrayService import OpenLoadInteractionMatrix, OpenDumpInteractionMatrix
 
 
 def kill(Hero):
@@ -23,17 +21,8 @@ def loss(Hero):
     Hero.save()
 
 
-def make_interaction_array():
-    N = Hero.objects.count()+1
-    InteractionMatrix = np.triu(np.ones((N, N)).astype(np.int), 1)
-
-    with open('interaction_array.pickle', 'wb') as file:
-        pickle.dump(InteractionMatrix, file)
-
-
 def Pairing(group_id):
-    with open(os.path.dirname(__file__)+'/../interaction_array.pickle', 'rb') as file:
-        InteractionMatrix = pickle.load(file)
+    InteractionMatrix = OpenLoadInteractionMatrix()
 
     heroes = Hero.objects.filter(defeat_date__isnull = True).filter(is_killed=False).filter(group=group_id)
     indexes = list(map(lambda x: x.id, heroes))
@@ -59,7 +48,6 @@ def Pairing(group_id):
             pairs.append([Hero.objects.filter(id=chosen1), Hero.objects.filter(id=chosen2)])
             InteractionMatrix[chosen1, chosen2] = 0
 
-    with open(os.path.dirname(__file__)+'/../interaction_array.pickle', 'wb') as file:
-        pickle.dump(InteractionMatrix, file)
+    OpenDumpInteractionMatrix(InteractionMatrix)
 
     return pairs
