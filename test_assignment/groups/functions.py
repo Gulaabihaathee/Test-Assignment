@@ -1,7 +1,7 @@
 from .heromodel import Hero
 import datetime
 from random import choice
-from .InteractionArrayService import OpenLoadInteractionMatrix, OpenDumpInteractionMatrix
+from .InteractionArrayService import LoadInteractionArray, DumpInteractionArray
 
 
 def kill(Hero):
@@ -22,7 +22,7 @@ def loss(Hero):
 
 
 def Pairing(group_id):
-    InteractionMatrix = OpenLoadInteractionMatrix()
+    InteractionMatrix = LoadInteractionArray()
 
     heroes = Hero.objects.filter(defeat_date__isnull = True).filter(is_killed=False).filter(group=group_id)
     indexes = list(map(lambda x: x.id, heroes))
@@ -48,6 +48,6 @@ def Pairing(group_id):
             pairs.append([Hero.objects.filter(id=chosen1), Hero.objects.filter(id=chosen2)])
             InteractionMatrix[chosen1, chosen2] = 0
 
-    OpenDumpInteractionMatrix(InteractionMatrix)
+    DumpInteractionArray(InteractionMatrix)
 
     return pairs
