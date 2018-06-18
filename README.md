@@ -8,7 +8,7 @@ Test assignment for Summer Python Internship.
 
 *cd test_assignment/*
 
-3)Type in command prompt:
+3) Type in command prompt:
 
 *python manage.py runserver*
 
