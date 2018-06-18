@@ -4,11 +4,11 @@ from random import choice
 from .heromodel import Hero
 from .groupmodel import Group
 
+
 class PairingModel(models.Model):
     interaction_array = models.CharField(max_length=10000, blank=True)
     group_name = models.CharField(max_length=250, null=True, blank=True)
     pairs = models.TextField(max_length=10000, null=True, blank=True)
-
 
     def make_interaction_array(self):
         N = Hero.objects.filter(group=Group.objects.get(name=self.group_name)).count()+1
@@ -16,8 +16,6 @@ class PairingModel(models.Model):
         string_array = array2string(ravel(array))[1:-1]
         self.interaction_array = string_array
         self.save()
-
-
 
     def Pairing(self):
         try:
@@ -67,8 +65,6 @@ class PairingModel(models.Model):
                 self.pairs = pairs_string
 
             self.save()
-
-
 
     def __str__(self):
         return self.group_name
