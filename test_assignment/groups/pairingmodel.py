@@ -11,8 +11,8 @@ class PairingModel(models.Model):
     pairs = models.TextField(max_length=10000, null=True, blank=True)
 
     def make_interaction_array(self):
-        N = Hero.objects.filter(group=Group.objects.get(name=self.group_name)).count()+1
-        array = triu(ones((N, N)), 1).astype(int)
+        size = Hero.objects.filter(group=Group.objects.get(name=self.group_name)).count()+1
+        array = triu(ones((size, size)), 1).astype(int)
         string_array = array2string(ravel(array))[1:-1]
         self.interaction_array = string_array
         self.save()
@@ -24,12 +24,12 @@ class PairingModel(models.Model):
             self.pairs = 'This group does not exist or does not have enough heroes to pair.'
             self.save()
         else:
-            N = Hero.objects.filter(group=Group.objects.get(name=self.group_name)).count() + 1
-            InteractionMatrix = reshape(fromstring(self.interaction_array, dtype=int, sep=' '), (N, N))
+            size = Hero.objects.filter(group=Group.objects.get(name=self.group_name)).count() + 1
+            InteractionMatrix = reshape(fromstring(self.interaction_array, dtype=int, sep=' '), (size, size))
 
             heroes = Hero.objects.filter(defeat_date__isnull=True).filter(is_killed=False).filter(group=group_id)
-            indexes1 = list(map(lambda x: x.id, heroes))
-            mapping_indexes = arange(len(indexes1))
+            indexes = list(map(lambda x: x.id, heroes))
+            mapping_indexes = arange(len(indexes))
 
             pairs = []
 
@@ -49,7 +49,7 @@ class PairingModel(models.Model):
                 chosen2 = choice(list(set2))
 
                 if InteractionMatrix[chosen1, chosen2] == 1:
-                    pairs.append([Hero.objects.filter(id=indexes1[chosen1]), Hero.objects.filter(id=indexes1[chosen2])])
+                    pairs.append([Hero.objects.filter(id=indexes[chosen1]), Hero.objects.filter(id=indexes[chosen2])])
                     InteractionMatrix[chosen1, chosen2] = 0
 
             array = InteractionMatrix
