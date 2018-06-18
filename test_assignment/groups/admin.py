@@ -1,19 +1,13 @@
 from django.contrib import admin
+from datetime import datetime
 from .heromodel import Hero
 from .groupmodel import Group
-from datetime import datetime
 from .pairingmodel import PairingModel
-
 
 
 def kill(modeladmin, request, queryset):
     for i in range(len(queryset)):
         queryset[i].kill()
-
-class Heroes(admin.ModelAdmin):
-    list_display = ('id','name', 'wins_counter', 'defeats_counter', 'is_killed')
-    actions = (kill,)
-
 
 def make_array(modeladmin, request, queryset):
     for i in range(len(queryset)):
@@ -23,6 +17,10 @@ def make_pairs(modeladmin, request, queryset):
     for i in range(len(queryset)):
         queryset[i].Pairing()
 
+
+class Heroes(admin.ModelAdmin):
+    list_display = ('id','name', 'wins_counter', 'defeats_counter', 'is_killed')
+    actions = (kill,)
 
 class PairingModelInterface(admin.ModelAdmin):
     list_display = ('group_name', )
