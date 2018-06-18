@@ -1,8 +1,8 @@
-from django.http import HttpResponse
-from .heromodel import Hero
 from rest_framework.permissions import IsAdminUser
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.http import HttpResponse
+from .heromodel import Hero
 from .serializers import HeroSerializer
 
 
@@ -23,7 +23,6 @@ class HeroRanking(APIView):
         HeroSerializer.Meta.fields = ('name', 'wins_counter', 'defeats_counter')
         serializer = HeroSerializer(heroes, many=True)
         return Response(serializer.data)
-
 
 class DefeatedHeroList(APIView):
     permission_classes = (IsAdminUser,)
