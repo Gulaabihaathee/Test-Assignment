@@ -22,4 +22,10 @@ Test assignment for Summer Python Internship.
     
     *http://127.0.0.1:8000/ranking/defeatedheroeslist*
     
-    to see ranking.
+    to see ranking and views.
+    
+# Tests
+
+1) Type in command prompt:
+
+      *python manage.py test*
