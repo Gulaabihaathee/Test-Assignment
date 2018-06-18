@@ -18,6 +18,7 @@ def ranking(request):
 
 class HeroRanking(APIView):
     permission_classes = (IsAdminUser,)
+    
     def get(self, request):
         heroes = Hero.objects.filter(is_killed=False).order_by('-wins_counter', 'defeats_counter')
         HeroSerializer.Meta.fields = ('name', 'wins_counter', 'defeats_counter')
@@ -26,6 +27,7 @@ class HeroRanking(APIView):
 
 class DefeatedHeroList(APIView):
     permission_classes = (IsAdminUser,)
+    
     def get(self, request):
         heroes = Hero.objects.filter(defeat_date__isnull = False).order_by('-wins_counter')
         HeroSerializer.Meta.fields = ('name', 'wins_counter', 'defeat_date')
