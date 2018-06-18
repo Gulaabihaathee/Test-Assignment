@@ -4,9 +4,7 @@ Test assignment for Summer Python Internship.
 # Run
 1) Install all neccesary libraries from *requirements.txt*.
 
-2) Enter directory:
-
-    *cd test_assignment/*
+2) Enter directory: *test_assignment/*
 
 3) Type in command prompt:
 
