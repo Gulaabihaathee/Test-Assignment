@@ -1,10 +1,12 @@
 from django.test import TestCase
+from random import randint
 from .heromodel import Hero
 from .groupmodel import Group
 from .pairingmodel import PairingModel
-from random import randint
+
 
 class ProjectTestCases(TestCase):
+    
     def setUp(self):
         Hero.objects.create(name='Test Hero', is_killed=False)
         Group.objects.create(name='Testers')
@@ -22,10 +24,11 @@ class ProjectTestCases(TestCase):
     def test_pairing(self):
         # String with all possible pairs with no repetition
         all_pairing_possibilities = ''
+        
         pairing_string = ''
         # Number of all possible pairs with no repetition
         sum_of_combinations = 0
-
+        
         # Number of heroes in testers group
         all_testers = Hero.objects.filter(group=Group.objects.get(name='Testers')).count()
 
