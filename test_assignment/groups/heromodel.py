@@ -12,7 +12,6 @@ class Hero(models.Model):
     murder_date = models.DateTimeField(null=True, blank=True)
     defeat_date = models.DateTimeField(null=True, blank=True)
     
-    
     def __str__(self):
         return self.name
 
