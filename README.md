@@ -17,7 +17,9 @@ Test assignment for Summer Python Internship.
     Open web browser on: 
     
     *http://127.0.0.1:8000/ranking* 
+    
     *http://127.0.0.1:8000/ranking/json*
+    
     *http://127.0.0.1:8000/ranking/defeatedheroeslist*
     
     to see ranking.
