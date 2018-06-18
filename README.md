@@ -3,14 +3,31 @@
 Test assignment for Summer Python Internship.
 
 # Run
-Enter directory:
 
-*cd test_assignment/*
+1) Install all neccesary libraries from *requirements.txt*.
 
-Type in command prompt:
+2) Enter directory: *test_assignment/*
 
-*python manage.py runserver*
+3) Type in command prompt:
 
-# Open in web browser:
+    *python manage.py runserver*
 
-http://127.0.0.1:8000/ranking
+4) Open web browser on *127.0.0.1:8000/admin* to log in as admin user.
+
+    Username: admin, password is the name of engine from the Sakaar planet.
+
+    Open web browser on: 
+    
+    *http://127.0.0.1:8000/ranking* 
+    
+    *http://127.0.0.1:8000/ranking/json*
+    
+    *http://127.0.0.1:8000/ranking/defeatedheroeslist*
+    
+    to see ranking and views.
+    
+# Tests
+
+1) Type in command prompt:
+
+      *python manage.py test*
